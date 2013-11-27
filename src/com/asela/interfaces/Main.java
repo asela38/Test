@@ -27,7 +27,7 @@ public class Main {
 	}
 	
 	public static Logger getLogger() {
-		return new  TimerStampWrapperLogger(new ConsoleLogger());
+		return new TimerStampWrapperLogger(new FileLogger());
 	}
 	
 	interface Logger {

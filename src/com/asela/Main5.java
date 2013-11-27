@@ -29,7 +29,7 @@ public class Main5 {
 			System.out.println(string);
 		}
 		
-		
+		 
 	}
 
 	private static void second() {
