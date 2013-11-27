@@ -1,0 +1,210 @@
+Classfile /C:/Users/aillayapparachchi/workspace/Test/bin/com/asela/Main2.class
+  Last modified Nov 20, 2013; size 1200 bytes
+  MD5 checksum c12a273fe13350dc5055346745913f22
+  Compiled from "Main2.java"
+public class com.asela.Main2
+  SourceFile: "Main2.java"
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Class              #2             //  com/asela/Main2
+   #2 = Utf8               com/asela/Main2
+   #3 = Class              #4             //  java/lang/Object
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Utf8               Code
+   #8 = Methodref          #3.#9          //  java/lang/Object."<init>":()V
+   #9 = NameAndType        #5:#6          //  "<init>":()V
+  #10 = Utf8               LineNumberTable
+  #11 = Utf8               LocalVariableTable
+  #12 = Utf8               this
+  #13 = Utf8               Lcom/asela/Main2;
+  #14 = Utf8               main
+  #15 = Utf8               ([Ljava/lang/String;)V
+  #16 = Class              #17            //  java/util/Scanner
+  #17 = Utf8               java/util/Scanner
+  #18 = Fieldref           #19.#21        //  java/lang/System.in:Ljava/io/InputStream;
+  #19 = Class              #20            //  java/lang/System
+  #20 = Utf8               java/lang/System
+  #21 = NameAndType        #22:#23        //  in:Ljava/io/InputStream;
+  #22 = Utf8               in
+  #23 = Utf8               Ljava/io/InputStream;
+  #24 = Methodref          #16.#25        //  java/util/Scanner."<init>":(Ljava/io/InputStream;)V
+  #25 = NameAndType        #5:#26         //  "<init>":(Ljava/io/InputStream;)V
+  #26 = Utf8               (Ljava/io/InputStream;)V
+  #27 = String             #28            //  a
+  #28 = Utf8               a
+  #29 = Methodref          #1.#30         //  com/asela/Main2.method1:(Ljava/util/Scanner;ZLjava/lang/String;)Z
+  #30 = NameAndType        #31:#32        //  method1:(Ljava/util/Scanner;ZLjava/lang/String;)Z
+  #31 = Utf8               method1
+  #32 = Utf8               (Ljava/util/Scanner;ZLjava/lang/String;)Z
+  #33 = Methodref          #1.#34         //  com/asela/Main2.method2:(Ljava/util/Scanner;ZLjava/lang/String;)Z
+  #34 = NameAndType        #35:#32        //  method2:(Ljava/util/Scanner;ZLjava/lang/String;)Z
+  #35 = Utf8               method2
+  #36 = Utf8               args
+  #37 = Utf8               [Ljava/lang/String;
+  #38 = Utf8               br
+  #39 = Utf8               Ljava/util/Scanner;
+  #40 = Utf8               result
+  #41 = Utf8               Z
+  #42 = Utf8               searchText
+  #43 = Utf8               Ljava/lang/String;
+  #44 = Methodref          #16.#45        //  java/util/Scanner.nextLine:()Ljava/lang/String;
+  #45 = NameAndType        #46:#47        //  nextLine:()Ljava/lang/String;
+  #46 = Utf8               nextLine
+  #47 = Utf8               ()Ljava/lang/String;
+  #48 = Methodref          #49.#51        //  java/lang/String.indexOf:(Ljava/lang/String;)I
+  #49 = Class              #50            //  java/lang/String
+  #50 = Utf8               java/lang/String
+  #51 = NameAndType        #52:#53        //  indexOf:(Ljava/lang/String;)I
+  #52 = Utf8               indexOf
+  #53 = Utf8               (Ljava/lang/String;)I
+  #54 = Methodref          #16.#55        //  java/util/Scanner.hasNextLine:()Z
+  #55 = NameAndType        #56:#57        //  hasNextLine:()Z
+  #56 = Utf8               hasNextLine
+  #57 = Utf8               ()Z
+  #58 = Utf8               StackMapTable
+  #59 = Utf8               line
+  #60 = Utf8               SourceFile
+  #61 = Utf8               Main2.java
+{
+  public com.asela.Main2();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: invokespecial #8                  // Method java/lang/Object."<init>":()V
+         4: return        
+      LineNumberTable:
+        line 5: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   Lcom/asela/Main2;
+
+  public static void main(java.lang.String[]);
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=4, args_size=1
+         0: new           #16                 // class java/util/Scanner
+         3: dup           
+         4: getstatic     #18                 // Field java/lang/System.in:Ljava/io/InputStream;
+         7: invokespecial #24                 // Method java/util/Scanner."<init>":(Ljava/io/InputStream;)V
+        10: astore_1      
+        11: iconst_0      
+        12: istore_2      
+        13: ldc           #27                 // String a
+        15: astore_3      
+        16: aload_1       
+        17: iload_2       
+        18: aload_3       
+        19: invokestatic  #29                 // Method method1:(Ljava/util/Scanner;ZLjava/lang/String;)Z
+        22: istore_2      
+        23: aload_1       
+        24: iload_2       
+        25: aload_3       
+        26: invokestatic  #33                 // Method method2:(Ljava/util/Scanner;ZLjava/lang/String;)Z
+        29: istore_2      
+        30: return        
+      LineNumberTable:
+        line 12: 0
+        line 13: 11
+        line 14: 13
+        line 16: 16
+        line 18: 23
+        line 20: 30
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      31     0  args   [Ljava/lang/String;
+              11      20     1    br   Ljava/util/Scanner;
+              13      18     2 result   Z
+              16      15     3 searchText   Ljava/lang/String;
+
+  private static boolean method2(java.util.Scanner, boolean, java.lang.String);
+    flags: ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: goto          20
+         3: aload_0       
+         4: invokevirtual #44                 // Method java/util/Scanner.nextLine:()Ljava/lang/String;
+         7: aload_2       
+         8: invokevirtual #48                 // Method java/lang/String.indexOf:(Ljava/lang/String;)I
+        11: iflt          18
+        14: iconst_1      
+        15: goto          19
+        18: iconst_0      
+        19: istore_1      
+        20: aload_0       
+        21: invokevirtual #54                 // Method java/util/Scanner.hasNextLine:()Z
+        24: ifeq          31
+        27: iload_1       
+        28: ifeq          3
+        31: iload_1       
+        32: ireturn       
+      LineNumberTable:
+        line 23: 0
+        line 24: 3
+        line 23: 20
+        line 26: 31
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      33     0    br   Ljava/util/Scanner;
+               0      33     1 result   Z
+               0      33     2 searchText   Ljava/lang/String;
+      StackMapTable: number_of_entries = 5
+           frame_type = 3 /* same */
+           frame_type = 14 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 0 /* same */
+           frame_type = 10 /* same */
+
+
+  private static boolean method1(java.util.Scanner, boolean, java.lang.String);
+    flags: ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=2, locals=4, args_size=3
+         0: goto          22
+         3: aload_0       
+         4: invokevirtual #44                 // Method java/util/Scanner.nextLine:()Ljava/lang/String;
+         7: astore_3      
+         8: aload_3       
+         9: aload_2       
+        10: invokevirtual #48                 // Method java/lang/String.indexOf:(Ljava/lang/String;)I
+        13: iflt          20
+        16: iconst_1      
+        17: goto          21
+        20: iconst_0      
+        21: istore_1      
+        22: aload_0       
+        23: invokevirtual #54                 // Method java/util/Scanner.hasNextLine:()Z
+        26: ifeq          33
+        29: iload_1       
+        30: ifeq          3
+        33: iload_1       
+        34: ireturn       
+      LineNumberTable:
+        line 30: 0
+        line 31: 3
+        line 32: 8
+        line 30: 22
+        line 34: 33
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      35     0    br   Ljava/util/Scanner;
+               0      35     1 result   Z
+               0      35     2 searchText   Ljava/lang/String;
+               8      14     3  line   Ljava/lang/String;
+      StackMapTable: number_of_entries = 5
+           frame_type = 3 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 16
+        locals = [ class java/lang/String ]
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 250 /* chop */
+          offset_delta = 0
+           frame_type = 10 /* same */
+
+}
