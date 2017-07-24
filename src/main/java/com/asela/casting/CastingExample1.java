@@ -1,8 +1,5 @@
 package com.asela.casting;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CastingExample1 {
 
 	/**
@@ -16,7 +13,7 @@ public class CastingExample1 {
 		StringBuilder a2 = (StringBuilder)a1;
 		
 		Object b = a2;
-		
+		 
 		System.out.println(a1.charAt(1));
 		System.out.println(a2.indexOf("b"));
 		

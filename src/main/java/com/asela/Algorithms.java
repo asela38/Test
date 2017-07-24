@@ -1,6 +1,6 @@
 package com.asela;
 
-public class Main4 {
+public class Algorithms {
 
 	public static void main(String[] args) {
 		System.out.println(smallFunction3(new int[] {1,2,3,4,5,6}));
@@ -10,18 +10,18 @@ public class Main4 {
 		System.out.println(smallFunction3(new int[] {71,2,3,64,5,66}));
 		System.out.println(smallFunction3(new int[] {771,2,773,84,5,6}));
 		System.out.println("---");
-		System.out.println(smallFunction(new int[] {1,2,3,4,5,6}));
-		System.out.println(smallFunction(new int[] {1,2,5,6,2,7}));
-		System.out.println(smallFunction(new int[] {1,2,3,4,5,6}));
-		System.out.println(smallFunction(new int[] {-41,-21,-3,-42,-5,-6}));
-		System.out.println(smallFunction(new int[] {71,2,3,64,5,66}));
-		System.out.println(smallFunction(new int[] {771,2,773,84,5,6}));
+		System.out.println(averageOfLargestAndSecondLargest(new int[] {1,2,3,4,5,6}));
+		System.out.println(averageOfLargestAndSecondLargest(new int[] {1,2,5,6,2,7}));
+		System.out.println(averageOfLargestAndSecondLargest(new int[] {1,2,3,4,5,6}));
+		System.out.println(averageOfLargestAndSecondLargest(new int[] {-41,-21,-3,-42,-5,-6}));
+		System.out.println(averageOfLargestAndSecondLargest(new int[] {71,2,3,64,5,66}));
+		System.out.println(averageOfLargestAndSecondLargest(new int[] {771,2,773,84,5,6}));
 		
 		
 		//System.out.println(getAverageOfTopTwo(new float[] {10,20,30}));
 	}
 
-	private static double smallFunction(int[] list) {
+	private static double averageOfLargestAndSecondLargest(int[] list) {
 		
 		assert list != null;
 		assert list.length > 1;
@@ -85,21 +85,21 @@ public class Main4 {
 		return average;
 	}
 	
-	public static float getAverageOfTopTwo(float[] numbers) {
+    public static float getAverageOfTopTwo(float[] numbers) {
 
-		float top1 = 0;
-		float top2 = 0;
+        float top1 = 0;
+        float top2 = 0;
 
-		for (float number : numbers) {
-		if (number > top2) {
-		if (number > top1) {
-		top1 = number;
-		} else {
-		top2 = number;
-		}
-		}
-		}
+        for (float number : numbers) {
+            if (number > top2) {
+                if (number > top1) {
+                    top1 = number;
+                } else {
+                    top2 = number;
+                }
+            }
+        }
 
-		return (top1 + top2)/2;
-		}
+        return (top1 + top2) / 2;
+    }
 }

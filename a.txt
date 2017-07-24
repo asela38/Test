@@ -2,7 +2,7 @@ Classfile /C:/Users/aillayapparachchi/workspace/Test/bin/com/asela/Main2.class
   Last modified Nov 20, 2013; size 1200 bytes
   MD5 checksum c12a273fe13350dc5055346745913f22
   Compiled from "Main2.java"
-public class com.asela.Main2
+public class com.asela.SearchForExistText
   SourceFile: "Main2.java"
   minor version: 0
   major version: 51
@@ -70,7 +70,7 @@ Constant pool:
   #60 = Utf8               SourceFile
   #61 = Utf8               Main2.java
 {
-  public com.asela.Main2();
+  public com.asela.SearchForExistText();
     flags: ACC_PUBLIC
     Code:
       stack=1, locals=1, args_size=1
