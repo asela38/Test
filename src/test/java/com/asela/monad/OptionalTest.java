@@ -20,8 +20,8 @@ public class OptionalTest {
             fieldProvider.getField().flatMap(line1 ->
             fieldProvider.getField().flatMap(line2 ->
             fieldProvider.getField().flatMap(cityName ->
-            fieldProvider.getField().flatMap(cityCode ->
-            Optional.of(new Person(name, new Address(line1, line2, new City(cityName, cityCode))))   
+            fieldProvider.getField().map(cityCode ->
+          new Person(name, new Address(line1, line2, new City(cityName, cityCode))) 
         )))));
     }
     
