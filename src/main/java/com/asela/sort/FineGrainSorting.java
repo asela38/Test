@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
-public class FinegrainSorting {
+public class FineGrainSorting {
 
     private static Consumer<String> print = string -> System.out.println(string); 
     
@@ -16,7 +16,7 @@ public class FinegrainSorting {
         
         IntStream.iterate(1, i -> i + 1)
                     .limit(100000)
-                    .mapToObj(i -> FinegrainSorting.randomBook())
+                    .mapToObj(i -> FineGrainSorting.randomBook())
                     .peek(book -> print.accept("created : " + book))
                     .collect(Collectors.toList())
                     .stream()
