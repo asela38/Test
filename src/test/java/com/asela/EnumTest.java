@@ -17,5 +17,10 @@ public class EnumTest {
         assertFalse(shape == Shape.CIRCLE);
         assertTrue(shape == Shape.TRIANGLE);
     }
+    
+    @Test(expected=IllegalArgumentException.class)
+    public void test_valueOf() throws Exception {
+        Shape.valueOf("PENTAGAN");
+    }
 
 }

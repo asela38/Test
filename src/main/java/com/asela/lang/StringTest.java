@@ -4,6 +4,9 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
+
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 public class StringTest {
@@ -27,6 +30,11 @@ public class StringTest {
         assertTrue("".split(",").length == 1);
         assertTrue(",".split(",").length == 0);
         assertTrue(",,".split(",").length == 0);
+        
+        assertTrue(Arrays.stream("".split(",")).filter(StringUtils::isNotBlank).toArray(String[]::new).length == 0);
+        assertTrue(Arrays.stream(",".split(",")).filter(StringUtils::isNotBlank).toArray(String[]::new).length  == 0);
+        assertTrue(Arrays.stream(",,".split(",")).filter(StringUtils::isNotBlank).toArray(String[]::new).length == 0 );
+        
         
     }
     
