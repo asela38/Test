@@ -11,7 +11,7 @@ public class Base64Test {
 
     @Test
     public void encode() throws Exception {
-        String original = "power3984orirer";
+        String original = "test121";
         byte[] encode = Base64.getEncoder().encode(original.getBytes());
         String encodeToString = Base64.getEncoder().encodeToString(original.getBytes());
         System.out.printf("%n original : %s , encode : %s , encodeToString : %s", original, Arrays.toString(encode), encodeToString);
