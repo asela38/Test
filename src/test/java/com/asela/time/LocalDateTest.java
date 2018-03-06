@@ -1,6 +1,8 @@
 package com.asela.time;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.junit.Test;
 
@@ -16,6 +18,13 @@ public class LocalDateTest {
 
         LocalDate minusDays = endOfTheMonth.minusDays(2);
         System.out.println("Two days before end of month " + minusDays);
+    }
+    
+    @Test
+    public void produceMonthPrefix() throws Exception {
+       
+        System.out.println(DateTimeFormatter.ofPattern("yyyyMMM").format(LocalDate.now()));
+        System.out.println(DateTimeFormatter.ofPattern("yyyyMMM").format(LocalDateTime.now()));
     }
 
 

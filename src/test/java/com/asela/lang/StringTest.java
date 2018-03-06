@@ -12,35 +12,42 @@ import org.junit.Test;
 public class StringTest {
 
     @Test
-    public void split_shouldReturnArrayAlways() {
-        
-        // if split regex doesn't match anything in the content it will return
-        // single item array
-        assertArrayEquals( new String[] {"aaa"}, "aaa".split(","));
-        assertArrayEquals( new String[] {""}, "".split(","));
-        assertArrayEquals( new String[] {" "}, " ".split(","));
-        
-        assertArrayEquals( new String[] {"aaa", "bbb"}, "aaa,bbb".split(","));
-        assertArrayEquals( new String[] {" ", " "}, " , ".split(","));
-        
-        // Split will ignore empty content between Split regex
-        assertArrayEquals( new String[] {}, ",".split(",") );
-        assertArrayEquals( new String[] {"aaa","bbb"}, "aaa,bbb,,".split(",") );
-        
+    public void inconsistencyIObserved() throws Exception {
+
         assertTrue("".split(",").length == 1);
         assertTrue(",".split(",").length == 0);
         assertTrue(",,".split(",").length == 0);
-        
-        assertTrue(Arrays.stream("".split(",")).filter(StringUtils::isNotBlank).toArray(String[]::new).length == 0);
-        assertTrue(Arrays.stream(",".split(",")).filter(StringUtils::isNotBlank).toArray(String[]::new).length  == 0);
-        assertTrue(Arrays.stream(",,".split(",")).filter(StringUtils::isNotBlank).toArray(String[]::new).length == 0 );
-        
-        
     }
-    
+
+    @Test
+    public void split_shouldReturnArrayAlways() {
+
+        // if split regex doesn't match anything in the content it will return
+        // single item array
+        assertArrayEquals(new String[] { "aaa" }, "aaa".split(","));
+        assertArrayEquals(new String[] { "" }, "".split(","));
+        assertArrayEquals(new String[] { " " }, " ".split(","));
+
+        assertArrayEquals(new String[] { "aaa", "bbb" }, "aaa,bbb".split(","));
+        assertArrayEquals(new String[] { " ", " " }, " , ".split(","));
+
+        // Split will ignore empty content between Split regex
+        assertArrayEquals(new String[] {}, ",".split(","));
+        assertArrayEquals(new String[] { "aaa", "bbb" }, "aaa,bbb,,".split(","));
+
+    }
+
+    @Test
+    public void expectedConsistency() throws Exception {
+        assertTrue(Arrays.stream("".split(",")).filter(StringUtils::isNotBlank).toArray(String[]::new).length == 0);
+        assertTrue(Arrays.stream(",".split(",")).filter(StringUtils::isNotBlank).toArray(String[]::new).length == 0);
+        assertTrue(Arrays.stream(",,".split(",")).filter(StringUtils::isNotBlank).toArray(String[]::new).length == 0);
+
+    }
+
     @Test
     public void regexLengthCheck() throws Exception {
-       assertTrue("123456789012".matches("[0-9]{10,}"));
-       assertFalse("123456789".matches("[0-9]{10,}"));
+        assertTrue("123456789012".matches("[0-9]{10,}"));
+        assertFalse("123456789".matches("[0-9]{10,}"));
     }
 }
