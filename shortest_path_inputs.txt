@@ -1,0 +1,9 @@
+7
+a c 3
+a b 1
+b e 16
+e d 4
+d c 2
+c x 1
+x z 12
+a z

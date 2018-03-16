@@ -84,4 +84,10 @@ public class NumberTest {
         System.out.println(new BigDecimal("1.5"));
         
     }
+    
+    
+    @Test
+    public void or() throws Exception {
+        System.out.println(100 | 222);
+    }
 }
