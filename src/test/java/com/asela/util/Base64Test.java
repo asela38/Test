@@ -26,4 +26,43 @@ public class Base64Test {
         System.out.printf("%n original : %s , decode : %s , encodeToString : %s", original, Arrays.toString(decode), new String(decode ,"UTF-8"));
         
     }
+    
+    
+    @Test
+    public void base64Test() throws Exception {
+        
+        String test = "abcde";
+        print(test.getBytes());
+        print(  Base64.getEncoder().encodeToString(test.getBytes()).getBytes());
+      
+    }
+    
+    @Test
+    public void decodeFewTest() throws Exception {
+        
+        printd("TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz" + 
+                "IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2Yg" + 
+                "dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGlu" + 
+                "dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRo" + 
+                "ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=");
+        
+        printd("ckvi");
+        
+    }
+
+
+    private void printd(String s) {
+        System.out.println(new String(Base64.getDecoder().decode(s.getBytes())));
+    }
+
+
+    private void print(byte[] bytes) {
+        System.out.println(
+                IntStream.range(0, bytes.length)
+                    .map(i ->  bytes[i])
+                    .mapToObj(Integer::toBinaryString)
+                    .collect(Collectors.joining(" "))
+                
+        );
+    }
 }
