@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -125,5 +126,13 @@ public class StringTest {
         assertThat(String.format("%(d", -10), is("(10)"));
         
         
+    }
+    
+    @Test
+    public void stringLines() throws Exception {
+   //    System.out.println(String.valueOf(null));
+            Object o = null;
+        System.out.println("null".equals(String.valueOf(o)));
+       System.out.println(Optional.ofNullable(o).map(Object::toString).orElse("NULL") ); 
     }
 }
