@@ -1,5 +1,8 @@
 package com.asela.util;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -127,25 +130,44 @@ public class HashMapTest {
             System.out.println(i + "," +  l);
         }   
         
-//        System.out.println("size " + hashMap.size());
-//        
-//        Field field = HashMap.class.getDeclaredField("table");
-//        field.setAccessible(true);
-//        Object array = field.get(hashMap); 
-//        int l =  Array.getLength(array);
-//        System.out.println(l);
-//        for(int i = 0; i < l; i++) {
-//            Object node = Array.get(array, i);
-//            System.out.println(i + " " + ( node == null));
-////            Field field2 = node.getClass().getDeclaredField("value");
-////            field2.setAccessible(true);
-////            Object object = field2.get(node);
-////            
-////            System.out.println(i + "->" + object == null);
-//            
-//        }
+        System.out.println("size " + hashMap.size());
+        
+   //     printHashMapInternals(hashMap);
         
         
+    }
+
+    private void printHashMapInternals(HashMap<Object, Object> hashMap) {
+        try {
+            Field field = HashMap.class.getDeclaredField("table");
+            field.setAccessible(true);
+            Object array = field.get(hashMap);
+            int l = Array.getLength(array);
+            System.out.println(l);
+            for (int i = 0; i < l; i++) {
+                Object node = Array.get(array, i);
+                if (node == null) {
+                    System.out.println(i + " has elements no elements");
+                    continue;
+                }
+                Field fieldValue = node.getClass().getDeclaredField("value");
+                fieldValue.setAccessible(true);
+
+                Field fieldNext = node.getClass().getDeclaredField("next");
+                fieldNext.setAccessible(true);
+
+                System.out.printf("%s", i);
+                do {
+                    Object object = fieldValue.get(node);
+                    System.out.printf(" -> %s ", object);
+
+                    node = fieldNext.get(node);
+                } while (node != null);
+                System.out.println();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     @Test
@@ -164,4 +186,40 @@ public class HashMapTest {
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
     
+    @Test
+    public void testNullAsKeyOnHashMap() throws Exception {
+        
+        HashMap<Object, Object> hashMap = new HashMap<>();
+        assertThat(hashMap.size(), is(0));
+        
+        hashMap.put(null, "Hello");
+        assertThat(hashMap.size(), is(1));
+        assertThat(hashMap.get(null), is("Hello"));
+        hashMap.put("f5a5a608", "Test");
+        
+        System.out.println(hashMap.get("f5a5a608"));
+        
+        printHashMapInternals(hashMap);
+        
+    }
+    
+    @Test
+    public void testLocalFactor() throws Exception {
+        String object = "I ";
+        HashMap<Object, Object> hashMap = new HashMap<>(1<<4, 4f);
+        IntStream.range(0, 50).forEach(i -> hashMap.put(i, object + i));
+        printHashMapInternals(hashMap);
+        
+    }
+    
+    @Test
+    public void testLocalFactor2() throws Exception {
+        String object = "I ";
+        HashMap<Object, Object> hashMap = new HashMap<>();
+        IntStream.range(0, 16).forEach(i -> {
+            hashMap.put(i, object + i);
+            System.out.println();
+            printHashMapInternals(hashMap);
+        });
+    }
 }

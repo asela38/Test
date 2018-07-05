@@ -32,3 +32,41 @@ LocalDate.now().plus(oneWeek);
 
 Syntax error on token "+", invalid AssignmentOperator Syntax error on token "+", invalid AssignmentOperator1 + 3 +Syntax error on token "~", ( expected 5 instanceof int 
 
+"f5a5a608".hashCode();
+(int) 0
+
+
+BigDecimal cannot be resolvedBigDecimal.valueOf(1L).divide(BigDecimal.valueOf(2L)).round(new MathContext(2,RoundingMode.HALF_UP))
+(java.math.BigDecimal) 0.5.longValue()
+
+
+String[] arr = new String[]{ "Test", "One" };
+Optional.of(arr[0]).or
+
+public User getUser() {
+    
+    User user = ...
+    
+    return user;
+}
+
+public Optional<User> getUser() {
+    
+    User user = ...
+    
+    return Optional.ofNullable(user);
+}
+
+
+add5.apply(10)
+
+Consumer<Integer> consumer = System.out::println;
+Supplier<Integer> supplier = () -> 10;
+Function<Integer, Integer> add5 = x -> x + 5;
+
+consumer.accept(add5.apply(supplier.get())); 
+
+
+java.util.stream.Stream.of(12,1212).re
+
+List

@@ -10,10 +10,14 @@ import static org.junit.Assert.assertTrue;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+
+import com.thedeanda.lorem.Lorem;
+import com.thedeanda.lorem.LoremIpsum;
 
 public class StringTest {
 
@@ -139,5 +143,26 @@ public class StringTest {
     public void testConcatAndFormat() throws Exception {
         Stream.of(1212121, 0, -1000)
                 .forEach(value -> assertEquals("X".concat(Integer.valueOf(value).toString()), String.format("X%s", value)));
+    }
+    
+    @Test
+    public void testName() throws Exception {
+        int l = alphabet.length;
+        IntStream.iterate(0, i -> ++i).limit(2_000_000).mapToObj(i -> getLetter(i) + getLetter(i/l) + getLetter(i/(l*l)) + getLetter(i/(l*l*l)) + getLetter(i/(l*l*l*l)) )
+        .map(String::trim).distinct().mapToInt(String::hashCode).forEach(System.out::println);
+        //System.out.println(count);
+    }
+    
+    @Test
+    public void loremIpsum() throws Exception {
+        Lorem lorem = LoremIpsum.getInstance();
+        System.out.println(
+        IntStream.iterate(0, i -> ++i).limit(600).mapToObj(i -> lorem.getCountry())
+        .map(String::trim).distinct().mapToInt(String::hashCode).summaryStatistics()); 
+    }
+
+    private static String[] alphabet = " ,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z".split(",");
+    private String getLetter(int i) {
+        return alphabet[i%alphabet.length];
     }
 }
