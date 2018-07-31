@@ -66,7 +66,29 @@ Function<Integer, Integer> add5 = x -> x + 5;
 
 consumer.accept(add5.apply(supplier.get())); 
 
+Function<Map<Integer,Integer>, Function<Integer, Integer>> funny = a -> b ->  a.put(b, a.getOrDefault(1, b) + a.getOrDefault(2, b));
 
-java.util.stream.Stream.of(12,1212).re
+HashMap<Integer, Integer> map = new HashMap<>();
+map.put(1, 10);
+map.put(2, 20);
 
-List
+Function<Integer, Integer> funnyClosure = funny.apply(map);
+
+System.out.println(funnyClosure.apply(11));
+map.get(11)
+
+map.put(1, 12);
+
+System.out.println(funnyClosure.apply(11));
+
+//map = null;
+
+System.out.println(funnyClosure.apply(11));
+
+System.gc();
+
+System.out.println(funnyClosure.apply(11) + " " + map);
+System.out.println(funnyClosure.apply(21) + " " + map);
+System.out.println(funnyClosure.apply(31) + " " + map);
+
+
