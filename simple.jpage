@@ -1,0 +1,94 @@
+
+System.out.println(Integer.toBinaryString(1<<30).replaceAll("[^0]","").length());
+ (No explicit return value)
+ 
+1<<1
+(int) 2
+
+Math.pow(2,1)
+(double) 2.0
+
+1 + 3
+(int) 4
+
+
+class Person {
+     public String name = "Test";
+ }
+
+Person person = new Person();
+person.name 
+(java.lang.String) Test
+
+null (No explicit return value)
+
+
+Period oneWeek = Period.ofWeeks(1);
+LocalDate.now();
+(java.time.LocalDate) 2018-06-04
+LocalDate.now().plus(oneWeek);
+(java.time.LocalDate) 2018-06-11
+
+
+Syntax error on token "+", invalid AssignmentOperator Syntax error on token "+", invalid AssignmentOperator1 + 3 +Syntax error on token "~", ( expected 5 instanceof int 
+
+"f5a5a608".hashCode();
+(int) 0
+
+
+BigDecimal cannot be resolvedBigDecimal.valueOf(1L).divide(BigDecimal.valueOf(2L)).round(new MathContext(2,RoundingMode.HALF_UP))
+(java.math.BigDecimal) 0.5.longValue()
+
+
+String[] arr = new String[]{ "Test", "One" };
+Optional.of(arr[0]).or
+
+public User getUser() {
+    
+    User user = ...
+    
+    return user;
+}
+
+public Optional<User> getUser() {
+    
+    User user = ...
+    
+    return Optional.ofNullable(user);
+}
+
+
+add5.apply(10)
+
+Consumer<Integer> consumer = System.out::println;
+Supplier<Integer> supplier = () -> 10;
+Function<Integer, Integer> add5 = x -> x + 5;
+
+consumer.accept(add5.apply(supplier.get())); 
+
+Function<Map<Integer,Integer>, Function<Integer, Integer>> funny = a -> b ->  a.put(b, a.getOrDefault(1, b) + a.getOrDefault(2, b));
+
+HashMap<Integer, Integer> map = new HashMap<>();
+map.put(1, 10);
+map.put(2, 20);
+
+Function<Integer, Integer> funnyClosure = funny.apply(map);
+
+System.out.println(funnyClosure.apply(11));
+map.get(11)
+
+map.put(1, 12);
+
+System.out.println(funnyClosure.apply(11));
+
+//map = null;
+
+System.out.println(funnyClosure.apply(11));
+
+System.gc();
+
+System.out.println(funnyClosure.apply(11) + " " + map);
+System.out.println(funnyClosure.apply(21) + " " + map);
+System.out.println(funnyClosure.apply(31) + " " + map);
+
+
