@@ -10,6 +10,8 @@ import static org.junit.Assert.assertTrue;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -141,28 +143,77 @@ public class StringTest {
 
     @Test
     public void testConcatAndFormat() throws Exception {
-        Stream.of(1212121, 0, -1000)
-                .forEach(value -> assertEquals("X".concat(Integer.valueOf(value).toString()), String.format("X%s", value)));
+        Stream.of(1212121, 0, -1000).forEach(
+                value -> assertEquals("X".concat(Integer.valueOf(value).toString()), String.format("X%s", value)));
     }
-    
+
     @Test
     public void testName() throws Exception {
         int l = alphabet.length;
-        IntStream.iterate(0, i -> ++i).limit(2_000_000).mapToObj(i -> getLetter(i) + getLetter(i/l) + getLetter(i/(l*l)) + getLetter(i/(l*l*l)) + getLetter(i/(l*l*l*l)) )
-        .map(String::trim).distinct().mapToInt(String::hashCode).forEach(System.out::println);
-        //System.out.println(count);
+        IntStream.iterate(0, i -> ++i).limit(2_000_000)
+                .mapToObj(i -> getLetter(i) + getLetter(i / l) + getLetter(i / (l * l)) + getLetter(i / (l * l * l))
+                        + getLetter(i / (l * l * l * l)))
+                .map(String::trim).distinct().mapToInt(String::hashCode).forEach(System.out::println);
+        // System.out.println(count);
     }
-    
+
     @Test
     public void loremIpsum() throws Exception {
         Lorem lorem = LoremIpsum.getInstance();
-        System.out.println(
-        IntStream.iterate(0, i -> ++i).limit(600).mapToObj(i -> lorem.getCountry())
-        .map(String::trim).distinct().mapToInt(String::hashCode).summaryStatistics()); 
+        System.out.println(IntStream.iterate(0, i -> ++i).limit(600).mapToObj(i -> lorem.getCountry()).map(String::trim)
+                .distinct().mapToInt(String::hashCode).summaryStatistics());
     }
 
     private static String[] alphabet = " ,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z".split(",");
+
     private String getLetter(int i) {
-        return alphabet[i%alphabet.length];
+        return alphabet[i % alphabet.length];
+    }
+
+    @Test
+    public void testListContainsStringStartingWith() throws Exception {
+
+        String[] list = { "a=b", "c=d" };
+        String r = useForLoop(list);
+        System.out.println(r);
+        
+        r = findUsingRegex(list);
+        
+        System.out.println(r);
+
+    }
+
+    private String findUsingRegex(String[] list) {
+        Pattern compile = Pattern.compile("((.*)=(.*))");
+        for (String string : list) {
+            Matcher matcher = compile.matcher(string);
+            if(matcher.find()) {
+                for (int i = 0; i <= matcher.groupCount(); i++) {
+                    System.out.println("++" + matcher.group(i));
+                }
+                return matcher.group(1);
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
+    private String useForLoop(String[] list) {
+
+        for (String s : list) {
+            String[] split = s.split("=");
+            if (split[0].startsWith("a")) {
+                return split[1];
+            }
+        }
+
+        throw new IllegalArgumentException();
+    }
+    
+    @Test
+    public void toArray() throws Exception {
+        
+       String[] array = Stream.of("A","B", "C").toArray(size -> new String[size]);
+       System.out.println(Arrays.toString(array));
+ 
     }
 }
