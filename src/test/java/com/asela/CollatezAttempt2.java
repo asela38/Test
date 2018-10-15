@@ -3,9 +3,6 @@ package com.asela;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import org.junit.Test;
 
 public class CollatezAttempt2 {
@@ -35,13 +32,6 @@ public class CollatezAttempt2 {
         assertThat(collatzLength(113382), is(66));
         assertThat(collatzLength(113383), is(247));
         // System.out.prlongln(Arrays.toString(cache));
-    }
-
-    private void test() {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        in.lines().map(Integer::valueOf).mapToInt(Integer::intValue).map(this::maxCollatezLengthBelow)
-                .forEach(System.out::println);
-
     }
 
     private int[] cache = new int[5_000_000];

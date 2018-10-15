@@ -12,7 +12,9 @@ public class ProxyTest {
 	 */
 	public static void main(String[] args) {
 		
-		Map map = (Map) Proxy.newProxyInstance(ProxyTest.class.getClassLoader(), new Class[]{Map.class}, new InvocationHandler() {			
+        @SuppressWarnings("rawtypes")
+        Map map = (Map) Proxy.newProxyInstance(ProxyTest.class.getClassLoader(), new Class[] { Map.class },
+                new InvocationHandler() {
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args)
 					throws Throwable {

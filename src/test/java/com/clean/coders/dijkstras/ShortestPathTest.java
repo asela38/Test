@@ -12,8 +12,6 @@ import org.junit.Test;
 
 public class ShortestPathTest {
 
-    private static final String ANY = null;
-
     @Test
     public void nothing() throws Exception {
 
@@ -41,13 +39,13 @@ public class ShortestPathTest {
         assertMinPath("B1Z,A1B", 2, "[A, B, Z]");
         assertMinPath("A1X,Y1Z", 0, "[]");
     }
-    
+
     @Test
     public void threeEdges() throws Exception {
         assertMinPath("A2B,B3C,C4Z", 9, "[A, B, C, Z]");
         assertMinPath("B3C,C4Z,A2B", 9, "[A, B, C, Z]");
     }
-    
+
     @Test
     public void onlyOnePath() throws Exception {
         assertMinPath("A1B,B2C,C3Z,B4D,D6E", 6, "[A, B, C, Z]");
@@ -108,12 +106,12 @@ class PathFinder {
 
     public void findPath(String begin, String end) {
         List<String> p = new ArrayList<>();
-        int l = 0; 
+        int l = 0;
         p.add(begin);
-        for(Edge e = findEdge(begin); e != null; e = findEdge(e.end)) {
+        for (Edge e = findEdge(begin); e != null; e = findEdge(e.end)) {
             p.add(e.end);
             l += e.length;
-            if(e.end.equals(end)) {
+            if (e.end.equals(end)) {
                 length = l;
                 path = p;
                 return;

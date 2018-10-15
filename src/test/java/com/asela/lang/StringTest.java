@@ -66,7 +66,7 @@ public class StringTest {
     @Test
     public void format() throws Exception {
         // %b
-        assertThat(String.format("%b", null), is("false"));
+        assertThat(String.format("%b", (Boolean) null), is("false"));
         assertThat(String.format("%b", Boolean.TRUE), is("true"));
         assertThat(String.format("%b", ""), is("true"));
 
@@ -176,9 +176,9 @@ public class StringTest {
         String[] list = { "a=b", "c=d" };
         String r = useForLoop(list);
         System.out.println(r);
-        
+
         r = findUsingRegex(list);
-        
+
         System.out.println(r);
 
     }
@@ -187,7 +187,7 @@ public class StringTest {
         Pattern compile = Pattern.compile("((.*)=(.*))");
         for (String string : list) {
             Matcher matcher = compile.matcher(string);
-            if(matcher.find()) {
+            if (matcher.find()) {
                 for (int i = 0; i <= matcher.groupCount(); i++) {
                     System.out.println("++" + matcher.group(i));
                 }
@@ -208,12 +208,12 @@ public class StringTest {
 
         throw new IllegalArgumentException();
     }
-    
+
     @Test
     public void toArray() throws Exception {
-        
-       String[] array = Stream.of("A","B", "C").toArray(size -> new String[size]);
-       System.out.println(Arrays.toString(array));
- 
+
+        String[] array = Stream.of("A", "B", "C").toArray(size -> new String[size]);
+        System.out.println(Arrays.toString(array));
+
     }
 }

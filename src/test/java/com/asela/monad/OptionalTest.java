@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
 import java.security.MessageDigest;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,8 +15,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
 import org.junit.Test;
-
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 public class OptionalTest {
 
@@ -67,6 +66,7 @@ public class OptionalTest {
     public String getPassword() {
         return ThreadLocalRandom.current().nextBoolean() ? "Test123!@#" : null;
     }
+
     @Test
     public void testNameee() throws Exception {
         System.out.println(encodePassword1("Hello"));
@@ -75,18 +75,19 @@ public class OptionalTest {
 
     public String encodePassword1(String password) throws Exception {
         return Optional.ofNullable(password)
-                        .map(String::getBytes)
-                        .map(MessageDigest.getInstance("SHA1")::digest)
-                        .map(Base64::encode)
-                        .orElse(null);
-                        //.orElseThrow(IllegalArgumentException::new);
+                .map(String::getBytes)
+                .map(MessageDigest.getInstance("SHA1")::digest)
+                .map(Base64.getEncoder()::encode)
+                .map(arr -> new String(arr))
+                .orElse(null);
+        // .orElseThrow(IllegalArgumentException::new);
 
     }
 
-    public String encodePassword2(String password) throws Exception{
+    public String encodePassword2(String password) throws Exception {
         if (password == null)
             return password;
-        return Base64.encode(MessageDigest.getInstance("SHA1").digest(password.getBytes()));
+        return new String(Base64.getEncoder().encode(MessageDigest.getInstance("SHA1").digest(password.getBytes())));
     }
 
     public Optional<String> concat(Optional<String> one, Optional<String> two) {
@@ -197,6 +198,7 @@ class FieldProvider<T> {
         return Optional.ofNullable(list.get(index++));
     }
 
+    @SafeVarargs
     public static <T> FieldProvider<T> get(T d, T... t) {
         FieldProvider<T> fieldProvider = new FieldProvider<>();
         Stream.of(t).forEach(fieldProvider.list::add);

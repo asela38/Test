@@ -4,6 +4,7 @@ import org.apache.commons.beanutils.BeanMap;
 
 public class BeanMapTest {
     
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         Book randomBook = FineGrainSorting.randomBook();
         BeanMap beanMap = new BeanMap(randomBook);
